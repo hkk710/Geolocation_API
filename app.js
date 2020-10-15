@@ -1,9 +1,9 @@
-(function () {
-    navigator.geolocation.getCurrentPosition(function (position) {
-       console.log(position.coords.latitude)
-       console.log(position.coords.longitude)
-    },
-    function (error) {
-        console.log("The Locator was denied. :(")
-    })
-})();
+$( document ).ready(function() {
+    $.ajax('http://ip-api.com/json')
+    .then(        
+        function success(response) {
+        $('#country').val("Current Country: " + response.country);
+        $('#state').val("Current State: " + response.regionName );
+        $('#city').val("Current City: " + response.city );
+    });
+});
